@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const UserController = require('./controllers/user');
+const loginController = require('./controllers/login');
 
 const app = express();
 app.use(bodyParser.json());
@@ -12,6 +13,7 @@ app.get('/', (request, response) => {
 });
 
 app.post('/user', UserController.createUser);
+app.post('/login', loginController.createLogin);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
 // app.listen(process.env.PORT, () => {
