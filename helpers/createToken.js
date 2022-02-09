@@ -8,7 +8,7 @@ const SECRET = process.env.JWT;
 const createToken = (user) => {
   const token = jwt.sign({ data: user }, SECRET, {
     algorithm: 'HS256',
-    expiresIn: '15d',
+    expiresIn: '7d',
   });
   return token;
 };
@@ -17,12 +17,19 @@ const createToken = (user) => {
 // const payload = jwt.decode(token, 'segredo');
 
 // **Posso visualizar os dados que foram transformados em token:
-// const payload = jwt.verify(token, 'segredo');
+const verifyToken = (user) => {
+  const token = jwt.verify({ data: user }, SECRET, {
+    algorithm: 'HS256',
+    expiresIn: '7d',
+  });
+  return token;
+};
 
 // **Verify VS decode:
-// verify: verifica se o tokjen é válido de acordo com o segredo;
+// verify: verifica se o token é válido de acordo com o segredo;
 // decode: decodifca independente do segredo.
 
 module.exports = {
   createToken,
+  verifyToken,
 };

@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const UserController = require('./controllers/user');
-const loginController = require('./controllers/login');
+const { createUser } = require('./controllers/user');
+const { createLogin } = require('./controllers/login');
+const controllersGetUsers = require('./controllers/userGet');
 
 const app = express();
 app.use(bodyParser.json());
@@ -12,10 +13,11 @@ app.get('/', (request, response) => {
   response.send();
 });
 
-app.post('/user', UserController.createUser);
-app.post('/login', loginController.createLogin);
+app.post('/user', createUser);
+app.post('/login', createLogin);
 
-app.listen(3000, () => console.log('ouvindo porta 3000!'));
-// app.listen(process.env.PORT, () => {
-//   console.log(`Escutando na porta ${process.env.PORT}`);
-// });
+app.get('/user', controllersGetUsers.getUsers);
+
+app.listen(process.env.PORT, () => {
+  console.log(`Escutando na porta ${process.env.PORT}`);
+});
