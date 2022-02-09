@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
 
-const SECRET = process.env.JWT;
+const SECRET = process.env.JWT_SECRET;
 
 // **cria um token:
 const createToken = (user) => {
