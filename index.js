@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -20,6 +19,4 @@ app.post('/login', createLogin);
 
 app.get('/user', tokenValidate, controllersGetUsers.getUsers);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Escutando na porta ${process.env.PORT}`);
-});
+app.listen(3000, () => console.log('ouvindo porta 3000!'));
