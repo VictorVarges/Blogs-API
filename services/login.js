@@ -1,4 +1,4 @@
-const { Login } = require('../models');
+const { Login, User } = require('../models');
 const { createToken } = require('../helpers/createToken');
 
 const emailValidate = async (email) => {
@@ -6,8 +6,8 @@ const emailValidate = async (email) => {
 
   if (email.length === 0) return { code: 400, message: '"email" is not allowed to be empty' };
 
-  const [dataLogin] = await Login.findAll({ where: { email } });
-  if (!dataLogin) return { code: 409, message: 'Invalid fields' };
+  const dataLogin = await User.findOne({ where: { email } });
+  if (!dataLogin) return { code: 400, message: 'Invalid fields' };
 };
 
 const passwordValidate = (password) => {
