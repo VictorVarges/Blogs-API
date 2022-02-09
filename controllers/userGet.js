@@ -1,11 +1,12 @@
 const { getUser } = require('../services/userGet');
 
-const getUsers = async (req, res) => {
-  // const verifyToken = req.headers.authorization;
-  const responseDB = await getUser();
+const STATUS_SUCCESS = 200;
 
-  return res.status(responseDB.status).json(responseDB.message);
-  // return res.status(201).json(responseDB);
+const getUsers = async (req, res) => {
+  const responseDB = await getUser();
+  console.log({ responseDB });
+
+  return res.status(STATUS_SUCCESS).json(responseDB);
 };
 
 module.exports = { getUsers };

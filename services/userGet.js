@@ -1,11 +1,9 @@
-const { verifyToken } = require('../helpers/createToken');
 const { User } = require('../models');
 
-const getUser = async (displayName, email, password, image) => {
-  const token = verifyToken({ displayName, email, password, image });
-  await User.findAll();
-
-  return { status: 200, message: token };
+const getUser = async () => {
+  const getAll = await User.findAll();
+  
+  return getAll;
 };
 
 module.exports = { getUser };

@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const { createUser } = require('./controllers/user');
 const { createLogin } = require('./controllers/login');
 const controllersGetUsers = require('./controllers/userGet');
+const { tokenValidate } = require('./middlewares/userGet');
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,7 +18,7 @@ app.get('/', (request, response) => {
 app.post('/user', createUser);
 app.post('/login', createLogin);
 
-app.get('/user', controllersGetUsers.getUsers);
+app.get('/user', tokenValidate, controllersGetUsers.getUsers);
 
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);

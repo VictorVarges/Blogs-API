@@ -17,12 +17,9 @@ const createToken = (user) => {
 // const payload = jwt.decode(token, 'segredo');
 
 // **Posso visualizar os dados que foram transformados em token:
-const verifyToken = (user) => {
-  const token = jwt.verify({ data: user }, SECRET, {
-    algorithm: 'HS256',
-    expiresIn: '7d',
-  });
-  return token;
+const verifyToken = (token) => {
+  const verify = jwt.verify(token, SECRET);
+  return verify;
 };
 
 // **Verify VS decode:
