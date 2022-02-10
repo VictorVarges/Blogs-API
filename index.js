@@ -19,9 +19,9 @@ app.get('/', (request, response) => {
 app.post('/user', createUser);
 app.post('/login', createLogin);
 
-app.get('/user/:id', userById, tokenValidate); 
-app.get('/user', getUsers, tokenValidate);
+app.get('/user/:id', tokenValidate, userById); 
+app.get('/user', tokenValidate, getUsers);
 
-app.post('/categories', createCategories, tokenValidate);
+app.post('/categories', tokenValidate, createCategories);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));

@@ -2,7 +2,6 @@ const { validations } = require('../services/login');
 
 const createLogin = async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body);
   
   const responseLogin = await validations({ email, password });
 
