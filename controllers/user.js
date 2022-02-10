@@ -2,8 +2,10 @@ const UserService = require('../services/user');
 
 const createUser = async (req, res) => {
   const { displayName, email, password } = req.body;
+  console.log(req.body);
   console.log('cc', { displayName });
-  const responseValidations = await UserService.validations({ displayName, email, password });
+  
+  const responseValidations = await UserService.validations(displayName, email, password);
 
   if (responseValidations.code) {
     return res.status(responseValidations.code).json({ message: responseValidations.message });
