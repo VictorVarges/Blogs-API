@@ -7,6 +7,7 @@ const { getUsers } = require('./controllers/userGet');
 const { tokenValidate } = require('./middlewares/errToken');
 const { userById } = require('./controllers/userId');
 const { createCategories } = require('./controllers/categories');
+const { getAllCategories } = require('./controllers/getCategories');
 
 const app = express();
 app.use(bodyParser.json());
@@ -23,5 +24,6 @@ app.get('/user/:id', tokenValidate, userById);
 app.get('/user', tokenValidate, getUsers);
 
 app.post('/categories', tokenValidate, createCategories);
+app.get('/categories', tokenValidate, getAllCategories);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));

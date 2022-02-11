@@ -1,11 +1,10 @@
-const ServCategories = require('../services/categories');
+const { newCategories } = require('../services/categories');
 
 const STATUS_OK = 201;
 
 const createCategories = async (req, res) => {
   const { name } = req.body;
-  const categoriesDB = await ServCategories.newCategories(name);
-  console.log('oi', categoriesDB.code);
+  const categoriesDB = await newCategories(name);
 
   if (categoriesDB.code) {
     return res.status(categoriesDB.code).json({ message: categoriesDB.message });

@@ -4,7 +4,6 @@ const { createToken } = require('../helpers/createToken');
 const EMAIL_VALIDATION = /\S+@\S+\.\S+/;
 
 const displayNameValidate = (displayName) => {
-  console.log({ displayName });
   if (displayName.length < 8) {
     return {
       code: 400, message: '"displayName" length must be at least 8 characters long',
