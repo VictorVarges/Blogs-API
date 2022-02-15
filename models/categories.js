@@ -1,6 +1,15 @@
 const Categories = (sequelize, DataTypes) => {
   const categories = sequelize.define('Category', {
-    name: DataTypes.STRING,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   }, {
     timestamps: false,
   });

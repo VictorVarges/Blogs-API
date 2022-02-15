@@ -1,5 +1,5 @@
+const { createToken, verifyToken } = require('../helpers/createToken');
 const { User } = require('../models');
-const { createToken } = require('../helpers/createToken');
 
 const EMAIL_VALIDATION = /\S+@\S+\.\S+/;
 
@@ -18,6 +18,15 @@ const emailValidate = async (email) => {
 
   const [dataUser] = await User.findAll({ where: { email } });
   if (dataUser) return { code: 409, message: 'User already registered' };
+};
+
+const getUserByToken = async (token) => {
+  if (!token) return false;
+  const { data } = verifyToken(token);
+  const { email } = data;
+  const user = await User.findOne({ where: { email } });
+  console.log('user >>>>>>>>>>', user.dataValues.id);
+  return user.dataValues.id;
 };
 
 const passwordValidate = (password) => {
@@ -47,4 +56,5 @@ const validations = async (displayName, email, password) => {
 
 module.exports = {
   validations,
+  getUserByToken,
 };

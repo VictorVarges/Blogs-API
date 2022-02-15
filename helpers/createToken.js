@@ -19,6 +19,7 @@ const createToken = (user) => {
 // **Posso visualizar os dados que foram transformados em token:
 const verifyToken = (token) => {
   const verify = jwt.verify(token, SECRET);
+  console.log('verify', verify.data.email);
   return verify;
 };
 

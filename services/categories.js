@@ -1,4 +1,3 @@
-const { createToken } = require('../helpers/createToken');
 const { Category } = require('../models');
 
 const nameValidate = (name) => {
@@ -10,9 +9,8 @@ const newCategories = async (name) => {
   const invokeNameValidate = nameValidate(name);
   if (invokeNameValidate) return invokeNameValidate;
 
-  const token = createToken({ name });
-  await Category.create({ name });
-  return { status: 201, message: token };
+  const createCategory = await Category.create({ name });
+  return createCategory;
 };
 
 module.exports = { newCategories };
