@@ -1,4 +1,4 @@
-const { Post, Category } = require('../models');
+const { BlogPost, Category } = require('../models');
 const { getUserByToken } = require('./user');
 
 const categoryNotFound = {
@@ -12,7 +12,7 @@ function postBody(title, content, categoryIds) {
   return true;
 }
 
-const huhu = async (categoryIds) => {
+const getIdCategory = async (categoryIds) => {
   const checkCategory = await Promise.all(categoryIds.map(async (id) => {
     const getId = await Category.findOne({ where: { id } });
     if (!getId) return false;
@@ -28,12 +28,12 @@ const postValidate = async (title, content, categoryIds, authorization) => {
   console.log('uu', userId);
   const body = postBody(title, content, categoryIds);
   if (body !== true) return body;
-  const invokeHuhu = await huhu(categoryIds);
+  const invokeGetIdCategory = await getIdCategory(categoryIds);
 
-  if (invokeHuhu !== true) return categoryNotFound;
+  if (invokeGetIdCategory !== true) return categoryNotFound;
   console.log(4);
 
-  const createPostDB = await Post.create({ userId, title, content, categoryIds });
+  const createPostDB = await BlogPost.create({ userId, title, content, categoryIds });
   console.log('juju', createPostDB);
 
   const { id } = createPostDB;
