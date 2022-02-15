@@ -5,12 +5,12 @@ const categoryNotFound = {
   code: 400, message: '"categoryIds" not found',
 };
 
-function postBody(title, content, categoryIds) {
+const postBody = (title, content, categoryIds) => {
   if (!title) return { code: 400, message: '"title" is required' };
   if (categoryIds === undefined) return { code: 400, message: '"categoryIds" is required' };
   if (!content) return { code: 400, message: '"content" is required' };
   return true;
-}
+};
 
 const getIdCategory = async (categoryIds) => {
   const checkCategory = await Promise.all(categoryIds.map(async (id) => {

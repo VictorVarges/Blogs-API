@@ -1,9 +1,9 @@
-// const { getPost } = require('../services/')
+const { getAllPosts } = require('../services/getPost');
 
-// const getPost = async (req, res) => {
-// const blogPost = await Post.getPost();
+const getPosts = async (req, res) => {
+const blogPost = await getAllPosts();
 
-// return res.status(blogPost.status).json(blogPost);
-// };
+return res.status(200).json(blogPost);
+};
 
-// module.exports = { getPost };
+module.exports = { getPosts };
