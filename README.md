@@ -1,4 +1,3 @@
-# Projeto One For All
 # Projeto Blogs Api
 - Neste projeto do curso da [Trybe](https://www.betrybe.com/), construí um backend utilidando `ORM` como o pacote `SEQUELIZE`.
 
