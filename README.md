@@ -1,23 +1,22 @@
 # BLOGS API
 
 ## Descrição
-This project was about creating an REST API with CRUD using Sequelize and MSC architecture. The project uses a relational database MySQL and it has unit tests in Mocha, Chai and Sinon.
+Este projeto foi sobre a criação de uma API REST com CRUD usando Sequelize e arquitetura MSC. O projeto utiliza um banco de dados relacional MySQL e possui testes unitários em Mocha, Chai e Sinon.
 
 ## Ferramentas
 * NodeJs w/ ExpressJs
 * MySQL
 * Sequelize
-* Joi
 * JWT 
 * Mocha/ Chai / Sinon
-## Intação de dependências
+## Instalação de dependências
 Clone this project and install all the dependencies 
 ```sh
   npm install
 ```
 Criar um .env com essa estrutura:
 ``` javascript
- MYSQL_USER=root
+  MYSQL_USER=root
   MYSQL_USER=root
   MYSQL_PASSWORD=aPassword
   HOSTNAME=localhost
